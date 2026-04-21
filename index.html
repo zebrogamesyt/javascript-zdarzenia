@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <title>JS: Zdarzenia 2</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+
+        const kontener = document.querySelector('#kontener');
+        const domyslnyRozmiar = 16;
+
+        kontener.addEventListener('click', function() {
+          const r = Math.floor(Math.random() * 256);
+          const g = Math.floor(Math.random() * 256);
+          const b = Math.floor(Math.random() * 256);
+          kontener.style.backgroundColor = `rgb(${r},${g},${b})`;
+        });
+
+        kontener.addEventListener('mouseenter', function() {
+          kontener.style.fontSize = (domyslnyRozmiar * 2) + 'px';
+        });
+
+        kontener.addEventListener('mouseleave', function() {
+          kontener.style.fontSize = domyslnyRozmiar + 'px';
+        });
+
+        const paragraf = document.querySelector('.wyroznione');
+
+        paragraf.addEventListener('dblclick', function() {
+          paragraf.textContent = 'powiat gdański';
+        });
+
+        paragraf.addEventListener('mouseenter', function() {
+          console.log(paragraf.textContent);
+        });
+
+        const artykul = document.querySelector('#artykul');
+        const liczba = document.querySelector('#liczba');
+
+        artykul.addEventListener('keydown', function() {
+          artykul.style.width = artykul.offsetWidth + 1 + 'px';
+        });
+
+        artykul.addEventListener('keydown', function(e) {
+          if (e.key >= '0' && e.key <= '9') {
+            liczba.textContent += e.key;
+          }
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <div id="kontener" style="width:50px; height:50px; font-size:16px;">Michał Kowalski</div>
+
+    <p class="wyroznione">Gdynia</p>
+
+    <input type="text" id="artykul" style="width:200px;">
+    <div id="liczba"></div>
+
+  </body>
+</html>
